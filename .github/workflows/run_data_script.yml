@@ -1,0 +1,17 @@
+name: data-script-workflow
+
+on:
+  workflow_run:
+    workflows: ['data-pipeline-workflow']
+    types: [completed]
+
+jobs:
+  run-data-script:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo content
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+      - name: Run Script
+        run: ./myScript.sh
