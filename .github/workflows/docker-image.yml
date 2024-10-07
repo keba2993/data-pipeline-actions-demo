@@ -16,12 +16,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Build the Docker image
-        run: docker build . --file Dockerfile --tag pythonaddimage:$(date +%s)
+        run: docker build . --file Dockerfile --tag pythonaddimage
       - name: View Docker Images
         run: docker images
       - name: Run Docker Container
-        run: docker run pythonaddimage:$(date +%s)
+        run: docker run pythonaddimage
       - name: Delete Docker Image
         run: |
           echo "Deleting Docker Image"
-          docker rm pythonaddimage:$(date +%s)
+          docker rm pythonaddimage
